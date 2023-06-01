@@ -1,0 +1,20 @@
+{
+  "id" : "17a3fdda-2657-4c08-9022-0c36342bb84e",
+  "nativeMobileNavConfig" : {
+    "showBackButton" : true,
+    "showHamburgerMenuWithBackButton" : false
+  },
+  "nativeTabMenu" : {
+    "branding" : {
+      "iconTintColorUnselected" : "#C9C5C5",
+      "barTintColor" : "#FFFFFF"
+    },
+    "menuItems" : [ {
+      "name" : "Home",
+      "targetUrl" : "/",
+      "iconAsset" : "slds-icon:home"
+    } ]
+  },
+  "showHamburgerMenu" : true,
+  "type" : "nativeConfig"
+}

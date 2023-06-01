@@ -1,0 +1,10 @@
+{
+  "activeViewId" : "102892b2-46ec-45db-b6b5-529067bb9378",
+  "appPageId" : "b4e914de-8730-4a6a-813a-76c6807e196f",
+  "configurationTags" : [ "allow-in-static-site" ],
+  "id" : "bdf8d77b-f2cc-437a-989b-cc7a38da2207",
+  "label" : "Service Not Available",
+  "routeType" : "service-not-available",
+  "type" : "route",
+  "urlPrefix" : "service-not-available"
+}
