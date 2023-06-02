@@ -9,11 +9,11 @@
   --dxp-g-root-contrast: #333333;
   --dxp-g-root-1: #F5F8F7;
   --dxp-g-root-2: #FCF7F2;
-  --dxp-g-root-contrast-1: #2E6541;
-  --dxp-g-root-contrast-2: #2E6541;
-  --dxp-g-brand: #3b7d4d;
+  --dxp-g-root-contrast-1: #15396C;
+  --dxp-g-root-contrast-2: #15396C;
+  --dxp-g-brand: #1C6DA6;
   --dxp-g-brand-contrast: #F5F6F8;
-  --dxp-g-brand-1: #3A915D;
+  --dxp-g-brand-1: #1C6DA6;
   --dxp-g-brand-2: #989898;
   --dxp-g-brand-3: #B7C1BA;
   --dxp-g-brand-contrast-1: #F5F6F8;
@@ -22,7 +22,7 @@
   --dxp-g-neutral: #76716b;
   --dxp-g-neutral-contrast: #fff;
   --dxp-g-neutral-1: #EBEEEC;
-  --dxp-g-footer-contrast: #2D3930;
+  --dxp-g-footer-contrast: #F5F6F8;
   /** set the font for all root/body text **/
   --dxp-g-root-font-family: "Roboto",arial;
   /** set the font for headings **/
