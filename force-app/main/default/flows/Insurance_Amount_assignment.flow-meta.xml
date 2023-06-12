@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <name>Check_for_Insurance</name>
+        <label>Check for Insurance</label>
+        <locationX>1722</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Insurance_add_300K</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type_Property_Transported__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Hazardous Materials</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_CMVs__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>add_300Kfirst</targetReference>
+            </connector>
+            <label>Insurance add 300K</label>
+        </rules>
+        <rules>
+            <name>Insurance_add_750K</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type_Property_Transported__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Hazardous Materials</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_CMVs__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_750K_insrunace</targetReference>
+            </connector>
+            <label>Insurance add 750K</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Insurance_Decision</name>
+        <label>Insurance Decision</label>
+        <locationX>1018</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Check_for_Insurance</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Less_than_15_Passengers</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Transoprt_Passengers__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Transport_Passengers_Amount__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes, with 15 or less</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Transport_Passengers_Amount__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Insurance_equals_1_5M</targetReference>
+            </connector>
+            <label>Less than 15 Passengers</label>
+        </rules>
+        <rules>
+            <name>More_than_15_Passengers</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Transoprt_Passengers__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Transport_Passengers_Amount__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes, with 16 or more</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Insurance_Equals_5M</targetReference>
+            </connector>
+            <label>More than 15 Passengers</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Property_non_hazardous</name>
+        <label>Property non hazardous</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Property_Non_Hazardous_add_300k</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type_Property_Transported__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Hazardous Materials</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_CMVs__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_300k_Property</targetReference>
+            </connector>
+            <label>Property Non-Hazardous add 300k</label>
+        </rules>
+        <rules>
+            <name>Property_Non_Hazardous_add_750k</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type_Property_Transported__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Hazardous Materials</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_CMVs__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_750K_Property</targetReference>
+            </connector>
+            <label>Property Non-Hazardous add 750k</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Property_Non_Hazardous_Add_Insurance</name>
+        <label>Property Non-Hazardous Add Insurance</label>
+        <locationX>1018</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Add_300k_Insur</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type_Property_Transported__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Hazardous Materials</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_CMVs__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_300k_insurance</targetReference>
+            </connector>
+            <label>Add 300k Insur</label>
+        </rules>
+        <rules>
+            <name>Add750K</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type_Property_Transported__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Hazardous Materials</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_CMVs__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_750K_insurance</targetReference>
+            </connector>
+            <label>Add750K</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>Add_1_5M</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.Insurance_Required__c} + 1500000</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>Add_300K</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.Insurance_Required__c} + 300000</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>Add_5M</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.Insurance_Required__c} + 5000000</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>Add_750K</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.Insurance_Required__c} + 750000</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Insurance Amount assignment {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Insurance Amount assignment</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Add_300k_insurance</name>
+        <label>Add 300k insurance</label>
+        <locationX>754</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Insurance_Required__c</field>
+            <value>
+                <elementReference>Add_300K</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Add_300k_Property</name>
+        <label>Add 300k</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Insurance_Required__c</field>
+            <value>
+                <elementReference>Add_300K</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>add_300Kfirst</name>
+        <label>add 300K</label>
+        <locationX>1458</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Insurance_Required__c</field>
+            <value>
+                <numberValue>300000.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Add_750K_insrunace</name>
+        <label>Add 750K insrunace</label>
+        <locationX>1722</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Insurance_Required__c</field>
+            <value>
+                <numberValue>750000.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Add_750K_insurance</name>
+        <label>Add 750K insurance</label>
+        <locationX>1018</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Insurance_Required__c</field>
+            <value>
+                <elementReference>Add_750K</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Add_750K_Property</name>
+        <label>Add 750K</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Insurance_Required__c</field>
+            <value>
+                <elementReference>Add_750K</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Insurance_equals_1_5M</name>
+        <label>Insurance equals 1.5M</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Property_non_hazardous</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Insurance_Required__c</field>
+            <value>
+                <numberValue>1500000.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Insurance_Equals_5M</name>
+        <label>Insurance Equals 5M</label>
+        <locationX>1018</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Property_Non_Hazardous_Add_Insurance</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Insurance_Required__c</field>
+            <value>
+                <numberValue>5000000.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>892</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Insurance_Decision</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

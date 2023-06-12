@@ -1,0 +1,13 @@
+.theme-content-background {
+    background-color: #FFF;
+}
+.action-icon-cont {
+    --sds-c-button-radius-border: 20px;
+    --sds-c-button-color-background: rgb(11,32,64);
+    --sds-c-button-text-color: rgb(255,255,255);
+    --slds-c-icon-color-foreground: rgb(255,255,255);
+    --slds-c-button-text-color-hover: rgb(255,255,255);
+}
+.submitted-icon-state {
+    --slds-c-icon-color-background: rgb(11,32,64);
+}

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cargo_Classification_Select__c</fullName>
+    <externalId>false</externalId>
+    <label>Classification of Transported Cargo</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>General Freight</fullName>
+                <default>false</default>
+                <label>General Freight</label>
+            </value>
+            <value>
+                <fullName>Household Goods</fullName>
+                <default>false</default>
+                <label>Household Goods</label>
+            </value>
+            <value>
+                <fullName>Metal: Sheets, Coils, Rolls</fullName>
+                <default>false</default>
+                <label>Metal: Sheets, Coils, Rolls</label>
+            </value>
+            <value>
+                <fullName>Motor Vehicles</fullName>
+                <default>false</default>
+                <label>Motor Vehicles</label>
+            </value>
+            <value>
+                <fullName>Drive Away/Tow Away</fullName>
+                <default>false</default>
+                <label>Drive Away/Tow Away</label>
+            </value>
+            <value>
+                <fullName>Logs, Poles, Beams, Lumber</fullName>
+                <default>false</default>
+                <label>Logs, Poles, Beams, Lumber</label>
+            </value>
+            <value>
+                <fullName>Building Materials</fullName>
+                <default>false</default>
+                <label>Building Materials</label>
+            </value>
+            <value>
+                <fullName>Mobile Home</fullName>
+                <default>false</default>
+                <label>Mobile Home</label>
+            </value>
+            <value>
+                <fullName>Fresh Produce</fullName>
+                <default>false</default>
+                <label>Fresh Produce</label>
+            </value>
+            <value>
+                <fullName>Liquids/Gases</fullName>
+                <default>false</default>
+                <label>Liquids/Gases</label>
+            </value>
+            <value>
+                <fullName>Intermodal</fullName>
+                <default>false</default>
+                <label>Intermodal</label>
+            </value>
+            <value>
+                <fullName>Machinery</fullName>
+                <default>false</default>
+                <label>Machinery</label>
+            </value>
+            <value>
+                <fullName>Passengers</fullName>
+                <default>false</default>
+                <label>Passengers</label>
+            </value>
+            <value>
+                <fullName>Oil Field Equipment</fullName>
+                <default>false</default>
+                <label>Oil Field Equipment</label>
+            </value>
+            <value>
+                <fullName>Livestock</fullName>
+                <default>false</default>
+                <label>Livestock</label>
+            </value>
+            <value>
+                <fullName>Grain, Feed, Hay</fullName>
+                <default>false</default>
+                <label>Grain, Feed, Hay</label>
+            </value>
+            <value>
+                <fullName>Coal/Coke</fullName>
+                <default>false</default>
+                <label>Coal/Coke</label>
+            </value>
+            <value>
+                <fullName>Meat</fullName>
+                <default>false</default>
+                <label>Meat</label>
+            </value>
+            <value>
+                <fullName>Garbage, Refuse, Trash</fullName>
+                <default>false</default>
+                <label>Garbage, Refuse, Trash</label>
+            </value>
+            <value>
+                <fullName>US Mail</fullName>
+                <default>false</default>
+                <label>US Mail</label>
+            </value>
+            <value>
+                <fullName>Chemicals</fullName>
+                <default>false</default>
+                <label>Chemicals</label>
+            </value>
+            <value>
+                <fullName>Commodities Dry Bulk</fullName>
+                <default>false</default>
+                <label>Commodities Dry Bulk</label>
+            </value>
+            <value>
+                <fullName>Refrigerated Food</fullName>
+                <default>false</default>
+                <label>Refrigerated Food</label>
+            </value>
+            <value>
+                <fullName>Beverages</fullName>
+                <default>false</default>
+                <label>Beverages</label>
+            </value>
+            <value>
+                <fullName>Paper Product</fullName>
+                <default>false</default>
+                <label>Paper Product</label>
+            </value>
+            <value>
+                <fullName>Utility</fullName>
+                <default>false</default>
+                <label>Utility</label>
+            </value>
+            <value>
+                <fullName>Farm Supplies</fullName>
+                <default>false</default>
+                <label>Farm Supplies</label>
+            </value>
+            <value>
+                <fullName>Construction</fullName>
+                <default>false</default>
+                <label>Construction</label>
+            </value>
+            <value>
+                <fullName>Water Well</fullName>
+                <default>false</default>
+                <label>Water Well</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

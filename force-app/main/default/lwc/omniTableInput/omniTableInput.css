@@ -1,0 +1,21 @@
+.table-header-style {
+    text-align: center;
+    font-size: 8pt;
+}
+.table-style {
+    background-color: white;
+    padding: 10px;
+    position: relative;
+}
+.title-style {
+    font-size: 8pt;
+}
+.table-children {
+    background-color: var(--slds-g-color-neutral-base-95, var(--lwc-colorBackgroundInputDisabled,rgb(243, 243, 243)));
+}
+.table-children:last-child {
+    border-right: var(--lwc-borderWidthThin,1px) solid var(--slds-g-color-border-base-1, var(--lwc-colorBorder,rgb(201, 201, 201)));
+}
+.table-header-style:last-child {
+    border-right: var(--lwc-borderWidthThin,1px) solid var(--slds-g-color-border-base-1, var(--lwc-colorBorder,rgb(201, 201, 201)));
+}

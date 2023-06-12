@@ -3,6 +3,13 @@
  */
 public with sharing class FmscaPortalController {
 
+    public class FormDataWrapper {
+        @AuraEnabled
+        public Case caseData;
+        @AuraEnabled
+        public OmniScriptSavedSession sesh;
+    }
+
     /**
      * Perform two SOQL queries to determine all the children NavigationMenuItems
      * belonging to the provided menuName and publishedState.
@@ -55,5 +62,60 @@ public with sharing class FmscaPortalController {
             WITH USER_MODE
             ORDER BY Position
         ];
+    }
+
+    @AuraEnabled
+    public static List<FormDataWrapper> fetchApplicationData(){
+        try {
+            String contactId = [SELECT Id, ContactId FROM User WHERE Id = :UserInfo.getUserId() WITH USER_MODE LIMIT 1].ContactId;
+            List<Case> caseList = [
+                SELECT
+                    Id,
+                    CaseNumber,
+                    Status,
+                    Owner.Name,
+                    OwnerId,
+                    New_Entrant__c,
+                    Insurance_Required__c
+                FROM Case
+                WHERE ContactId = :contactId
+                WITH USER_MODE
+            ];
+            List<FormDataWrapper> tempList = new List<FormDataWrapper>();
+            // Map<Id, FormDataWrapper> formResumeMapper = new Map<Id, FormDataWrapper>();
+            for (Case element : caseList) {
+                FormDataWrapper newWrapper = new FormDataWrapper();
+                newWrapper.caseData = element;
+                // if (element.Forms_007_008__r != null && element.Forms_007_008__r.size() > 0) {
+                //     formResumeMapper.put(element.Forms_007_008__r[0].Id, newWrapper);
+                //     continue;
+                // }
+                tempList.add(newWrapper);
+                System.debug('$templist: ' + tempList);
+            }
+
+            return tempList;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @AuraEnabled
+    public static List<Case> fetchCaseData(){
+        try {
+            return [
+                SELECT
+                    Id,
+                    CaseNumber,
+                    Status,
+                    Owner.Name,
+                    OwnerId
+                FROM Case
+                WHERE OwnerId = :UserInfo.getUserId()
+                WITH USER_MODE
+            ];
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
     }
 }

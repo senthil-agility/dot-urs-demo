@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-box slds-box_link slds-box_x-small">
+        <div class="slds-media slds-media_center theme-content-background">
+            <div class="slds-media__body slds-p-around_x-small">
+                <h2 class="slds-truncate slds-text-heading_medium">Application {formName}</h2>
+                <p class="slds-m-top_x-small slds-text-heading_small">Applicant: {applicantName}</p>
+                <p class="slds-m-top_xx-small slds-text-heading_small">Status: {formStatus}</p>
+            </div>
+            <div class="slds-media__figure slds-media__figure_reverse slds-media__figure_fixed-width">
+                <lightning-button-icon lwc:if={renderButtonIcon} class={buttonClass} icon-name={iconType} alternative-text={formStatusDisplay} title={formStatusDisplay} size="medium" onclick={handleOmniNav}></lightning-button-icon>
+                <lightning-icon lwc:if={renderIcon} class={buttonClass} icon-name={iconType} alternative-text={formStatusDisplay} title={formStatusDisplay} size={iconSize} onclick={handleExpandDetails}></lightning-icon>
+            </div>
+        </div>
+        <template if:true={showDetail}>
+            <lightning-record-view-form
+                record-id={caseId}
+                object-api-name={Case}>
+            </lightning-record-view-form>
+            <div class="slds-grid">test</div>
+        </template>
+    </div>
+</template>

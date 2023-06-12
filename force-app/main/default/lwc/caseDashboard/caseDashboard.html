@@ -1,0 +1,27 @@
+<template>
+    <div>
+        <div class="slds-grid slds-gutters_x-small slds-wrap">
+    
+          <div class="demo-only slds-col slds-size_12-of-12">
+    
+            <lightning-card>
+              <h3 slot="title">
+                  Applications
+              </h3>
+              <div lwc:if={emptyList} class="slds-var-m-left_small">
+                <p>Your application list is empty. Click 'Start Your Application' to begin a new submission.</p>
+              </div>
+              <div lwc:if={hasData} class="slds-col slds-size_12-of-12 slds-var-m-top_medium">
+                <template for:each={appData} for:item="form">
+                  <div key={form.caseData.Id}>
+                    <c-case-list form-data={form}></c-case-list>  
+                  </div>
+                </template>
+              </div>
+            </lightning-card>
+    
+          </div>
+        </div>
+    
+      </div>
+</template>
